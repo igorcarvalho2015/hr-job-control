@@ -1,22 +1,41 @@
 .menu {
-    height: 100%; /* 100% Full-height */
-    width: 60px; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    height: 100%;
+    width: 60px;
+    display: table;
+    position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
-    background-color: black; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
+    background-color: black;
+    overflow-x: hidden;
     color: black;
+    box-shadow: 3px 0 8px 0 rgba(0,0,0,0.25),3px 0 16px 0 rgba(0,0,0,0.20);
 }
 .menu a {
-  height: 100px;
-  margin-left: 7px;
-  margin-right: 7px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  text-align: center;
+  display: block;
   color: grey;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .menu a:hover {
   color: lightgrey;
+}
+.menu-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+.menu-inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.main-window {
+  position: fixed;
+  top: 0;
+  left: 60px;
+  height: 100%;
+  width: 100%;
+  background-color: lightblue;
+  padding: 20px;
 }

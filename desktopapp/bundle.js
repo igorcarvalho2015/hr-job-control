@@ -58,6 +58,10 @@
 
 	var _menu2 = _interopRequireDefault(_menu);
 
+	var _mainwindow = __webpack_require__(176);
+
+	var _mainwindow2 = _interopRequireDefault(_mainwindow);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = _react2.default.createClass({
@@ -67,7 +71,8 @@
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      _react2.default.createElement(_menu2.default, null)
+	      _react2.default.createElement(_menu2.default, null),
+	      _react2.default.createElement(_mainwindow2.default, null)
 	    );
 	  }
 	});
@@ -1285,20 +1290,12 @@
 	var warning = emptyFunction;
 
 	if (process.env.NODE_ENV !== 'production') {
-	  warning = function warning(condition, format) {
-	    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-	      args[_key - 2] = arguments[_key];
-	    }
+	  (function () {
+	    var printWarning = function printWarning(format) {
+	      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	        args[_key - 1] = arguments[_key];
+	      }
 
-	    if (format === undefined) {
-	      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-	    }
-
-	    if (format.indexOf('Failed Composite propType: ') === 0) {
-	      return; // Ignore CompositeComponent proptype check.
-	    }
-
-	    if (!condition) {
 	      var argIndex = 0;
 	      var message = 'Warning: ' + format.replace(/%s/g, function () {
 	        return args[argIndex++];
@@ -1312,8 +1309,26 @@
 	        // to find the callsite that caused this warning to fire.
 	        throw new Error(message);
 	      } catch (x) {}
-	    }
-	  };
+	    };
+
+	    warning = function warning(condition, format) {
+	      if (format === undefined) {
+	        throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+	      }
+
+	      if (format.indexOf('Failed Composite propType: ') === 0) {
+	        return; // Ignore CompositeComponent proptype check.
+	      }
+
+	      if (!condition) {
+	        for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+	          args[_key2 - 2] = arguments[_key2];
+	        }
+
+	        printWarning.apply(undefined, [format].concat(args));
+	      }
+	    };
+	  })();
 	}
 
 	module.exports = warning;
@@ -10448,7 +10463,7 @@
 	 * @return {boolean}
 	 */
 	function hasArrayNature(obj) {
-	  return(
+	  return (
 	    // not null/false
 	    !!obj && (
 	    // arrays are objects, NodeLists are functions in Safari
@@ -21504,25 +21519,67 @@
 	      "div",
 	      { className: "menu" },
 	      _react2.default.createElement(
-	        "a",
-	        { href: "#" },
-	        _react2.default.createElement("i", { className: "fa fa-search fa-3x", "aria-hidden": "true" })
-	      ),
-	      _react2.default.createElement(
-	        "a",
-	        { href: "#" },
-	        _react2.default.createElement("i", { className: "fa fa-upload fa-3x", "aria-hidden": "true" })
-	      ),
-	      _react2.default.createElement(
-	        "a",
-	        { href: "#" },
-	        _react2.default.createElement("i", { className: "fa fa-download fa-3x", "aria-hidden": "true" })
+	        "div",
+	        { className: "menu-container" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "menu-inner" },
+	          _react2.default.createElement(
+	            "a",
+	            { href: "#" },
+	            _react2.default.createElement("i", { className: "fa fa-search fa-2x", "aria-hidden": "true" })
+	          ),
+	          _react2.default.createElement(
+	            "a",
+	            { href: "#" },
+	            _react2.default.createElement("i", { className: "fa fa-upload fa-2x", "aria-hidden": "true" })
+	          ),
+	          _react2.default.createElement(
+	            "a",
+	            { href: "#" },
+	            _react2.default.createElement("i", { className: "fa fa-download fa-2x", "aria-hidden": "true" })
+	          )
+	        )
 	      )
 	    );
 	  }
 	});
 
 	exports.default = Menu;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var MainWindow = _react2.default.createClass({
+	  displayName: "MainWindow",
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "main-window" },
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "Search here"
+	      )
+	    );
+	  }
+	});
+
+	exports.default = MainWindow;
 
 /***/ }
 /******/ ]);
