@@ -18,4 +18,4 @@ Todo List:
 * Include Redux.
 * Optimize database.
 * Review design.
-* Deliver project :simple_smile:
+* Deliver project.
